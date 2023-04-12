@@ -36,7 +36,7 @@ jobs:
     - name: Build and Push container to ACR
       run: |
         docker build --file=./Dockerfile -t ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }} .
-        docker ls
+        docker images
         echo "Pushing image to repo..."
         docker push ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}  
     

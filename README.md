@@ -133,8 +133,6 @@ In the ASP code on the page, this DSN is then used to access the database:
 ```
 In the above, I had a sample table "person" in the database with a few rows of data. Note we have injected the connection string in the web app settings - as described previously.
 
-![SQL query results](https://github.com/johndohoneyjr/legacyaspondocker/blob/main/images/sqlresults.png)
-
 ## Building the app
 In my case i am using following names , please change according to your requirements
 Registry Name  = [jdohoney.azurecr.io/aspclassic:latest]

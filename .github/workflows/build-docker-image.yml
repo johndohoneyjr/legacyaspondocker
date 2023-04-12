@@ -8,10 +8,10 @@ on:
     branches:
       - master
 
-# Starts jobs and sets the type of runner (Windows) they will run on
+# Starts jobs and sets the type of runner (Windows-2019) they will run on
 jobs:
   build-and-deploy-to-azure:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
 

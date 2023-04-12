@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>Legacy ASP in Docker</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -44,7 +44,7 @@ End Function
 
     <!-- The Band Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-      <h2 class="w3-wide">Classic ASP Test Page v8 for MOD</h2>
+      <h2 class="w3-wide">Legacy ASP Page -- Home</h2>
       <h2 class="w3-wide">Windows Container</h2>
       <p class="w3-opacity"><i>web.config</i></p>
       <%
@@ -69,7 +69,7 @@ End Function
       'conn.open("Provider=MSOLEDBSQL;Data Source=tcp:jjmodtest.database.windows.net,1433;Initial Catalog=myDatabase;Authentication=SqlPassword;User ID=jjtestmod;Password=Superseven07;Use Encryption for Data=true;")
       %>	
 
-      <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing
+      <p class="w3-justify">We have created a fictional website. Lorem ipsum dolor sit amet, consectetur adipiscing
         elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco laboris nisi ut aliquip
         ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat

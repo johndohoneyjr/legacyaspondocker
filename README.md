@@ -1,9 +1,6 @@
 # Legacy ASP on Docker and App Services
 
-This is an updated version of this repo https://github.com/ImranMA/CodeSamples/tree/master/aspClassic-Docker. To demonstrate how a classic ASP application can be containerised and then deployed to a web app for containers (with a Windows service plan)
-
-
-
+This demonstrates how a classic ASP application can be added to a Windows Docker Container and then deployed to a web app for containers (with a Azure App Service Plan)
 
 ## Dockerfile
 ```
@@ -88,10 +85,10 @@ Following the article here https://docs.microsoft.com/en-us/azure/app-service/co
 ```
 
 In the web app configuration a custom application setting was added:
-![Web App for Containers settings](https://github.com/johndohoneyjr/legacyaspondocker/images/appsettings.png)
+![Web App for Containers settings](https://github.com/johndohoneyjr/legacyaspondocker/blob/main/images/appsettings.png)
 
 When the web page is displayed, you can see this has been picked up.
-![Picked up by code](https://github.com/johndohoneyjr/legacyaspondocker/images/onpage.png)
+![Picked up by code](https://github.com/johndohoneyjr/legacyaspondocker/blob/main/images/onpage.png)
 
 As can be seen, the value _APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string_ gets correctly injected into the container. This will allow connection strings and other settings to be injected into the application. 
 
@@ -136,7 +133,7 @@ In the ASP code on the page, this DSN is then used to access the database:
 ```
 In the above, I had a sample table "person" in the database with a few rows of data. Note we have injected the connection string in the web app settings - as described previously.
 
-![SQL query results](https://github.com/johndohoneyjr/legacyaspondocker/images/sqlresults.png)
+![SQL query results](https://github.com/johndohoneyjr/legacyaspondocker/blob/main/images/sqlresults.png)
 
 ## Building the app
 In my case i am using following names , please change according to your requirements

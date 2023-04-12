@@ -91,10 +91,10 @@ Following the article here https://docs.microsoft.com/en-us/azure/app-service/co
 ```
 
 In the web app configuration a custom application setting was added:
-![Web App for Containers settings](https://github.com/jometzg/classicaspdocker/blob/master/appsettings.png)
+![Web App for Containers settings](https://github.com/johndohoneyjr/legacyaspondocker/images/blob/master/appsettings.png)
 
 When the web page is displayed, you can see this has been picked up.
-![Picked up by code](https://github.com/jometzg/classicaspdocker/blob/master/onpage.png)
+![Picked up by code](https://github.com/johndohoneyjr/legacyaspondocker/images/blob/master/onpage.png)
 
 As can be seen, the value _APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string_ gets correctly injected into the container. This will allow connection strings and other settings to be injected into the application. 
 
@@ -111,7 +111,7 @@ In the above a web application setting *DSN* is being accessed as *APPSETTING_DS
 ## Accessing an Azure SQL Database
 It's often the case that an application need to access an SQL database. For migration to Azure, Azure SQL database is a really good option. This section covers how to setup the database driver so that ADODB code can use an Azure SQL database.
 
-Firstly, the driver needs to be installed in the container. There are several ways to do this, but the following creates a systme DSN that the application can use. I followed some advice from here https://dotnet-cookbook.cfapps.io/kubernetes/asp-with-odbc/
+Firstly, the driver needs to be installed in the container. There are several ways to do this, but the following creates a system DSN that the application can use. Reference: https://dotnet-cookbook.cfapps.io/kubernetes/asp-with-odbc/
 ```
 RUN Add-OdbcDsn -Name "SampleDSN" `
                 -DriverName "\"ODBC Driver 13 For SQL Server\"" `
@@ -139,14 +139,14 @@ In the ASP code on the page, this DSN is then used to access the database:
 ```
 In the above, I had a sample table "person" in the database with a few rows of data. Note we have injected the connection string in the web app settings - as described previously.
 
-![SQL query results](https://github.com/jometzg/classicaspdocker/blob/master/sqlresults.png)
+![SQL query results](https://github.com/johndohoneyjr/legacyaspondocker/images/blob/master/sqlresults.png)
 
 ## Building the app
 In my case i am using following names , please change according to your requirements
-Registry Name  = [classicasp.azurecr.io/aspclassic:latest]
+Registry Name  = [jdohoney.azurecr.io/aspclassic:latest]
 Image Name = [aspclassic]
 
-go to the src folder and Build the image . [aspclassic] is the name of container, you can change accordinlgy
+go to the src folder and Build the image . [aspclassic] is the name of container
 ```
 docker build -t aspclassic -f dockerfile .
 ```
@@ -162,7 +162,7 @@ docker run -d -p 8086:80 --env APPSETTING_DSN=the-complete-connection-string  --
 It should be noted that quoting the connection string may not be necessary, if there are no spaces. Use of single quotes **'** may cause the quotes to be injected too - making the connection string invalid.
 
 Steps to push the image to Azure
-Following command will log you into potral
+Following command will log you into portal
 ```
 az login
 ```
@@ -176,6 +176,3 @@ docker tag aspclassic classicasp.azurecr.io/aspclassic:latest
 docker push classicasp.azurecr.io/aspclassic:latest
 ```
 Then deploy a Web App for Containers, pointing to the container images you just uploaded!
-
-## Other samples
-Here is a repo https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples with a large number of sample Dockerfiles which may be used as a starting point for Windows-based containers.

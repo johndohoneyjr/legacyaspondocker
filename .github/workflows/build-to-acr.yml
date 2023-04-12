@@ -2,6 +2,8 @@ name: Build and Deploy Windows Container App to Azure App Service
 
 # Trigger the build on commits into the master branch
 on:
+  workflow_dispatch:
+  
   push:
     branches:
       - master

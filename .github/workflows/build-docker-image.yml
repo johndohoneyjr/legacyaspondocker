@@ -1,6 +1,6 @@
-name: Build and Deploy Windows Container App to Azure App Service
+name: Build and Deploy Windows Server 2019 Container App to Azure App Service
 
-# Trigger the build on commits into the master branch
+# Manually Trigger the build or on commits into the master branch
 on:
   workflow_dispatch:
   
@@ -28,7 +28,6 @@ jobs:
     - name: Docker login to ACR
       uses: azure/docker-login@v1
       with:
-       # comment out the login-server parameter if using docker hub
         login-server: ${{ secrets.CONTAINER_REGISTRY_NAME }}
         username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
         password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
@@ -37,6 +36,8 @@ jobs:
     - name: Build and Push container to ACR
       run: |
         docker build --file=./Dockerfile -t ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }} .
+        docker ls
+        echo "Pushing image to repo..."
         docker push ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}  
     
     # Need to set this in the app if a private repo (which ACR is)
